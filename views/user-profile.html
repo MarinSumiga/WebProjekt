@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moj Profil - Oglasi | Web Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/user-profile.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-light brand-hover" href="/">Web Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Uključi navigaciju">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="nav-links">
+                    <!-- Dinamički sadržaj se učitava putem JS-a -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-4 text-light">
+                    <i class="fas fa-user-circle me-2"></i>
+                    Moji Oglasi
+                </h2>
+                
+                <!-- Sekcija za pretragu i filtere -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body bg-dark text-light">
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="fas fa-search"></i></span>
+                                    <input type="text" id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="Pretraži svoje oglase..." aria-label="Pretraži oglase">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="fas fa-filter"></i></span>
+                                    <select id="statusFilter" class="form-select bg-dark text-light border-secondary" aria-label="Filtriraj po statusu">
+                                        <option value="">Svi statusi</option>
+                                        <option value="AVAILABLE">Dostupno</option>
+                                        <option value="SOLD">Prodano</option>
+                                        <option value="PENDING">Na čekanju</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kontejner za oglase -->
+                <div id="user-ads-container" class="mt-4">
+                    <div class="text-center p-5">
+                        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                            <span class="visually-hidden">Učitavanje...</span>
+                        </div>
+                        <p class="text-light mt-2">Učitavanje oglasa...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 bottom">
+        <div class="container">
+            <p class="mb-0">© 2023 Web Shop. Sva prava pridržana.</p>
+            <a href="#" class="text-white">Politika privatnosti</a> | <a href="#" class="text-white">Uvjeti korištenja</a>
+        </div>
+    </footer>
+
+
+        <!-- Modal za uređivanje oglasa (Poboljšana verzija) -->
+    <div class="modal fade" id="editAdModal" tabindex="-1" aria-labelledby="editAdModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0">
+        
+        <!-- Zaglavlje modala -->
+        <div class="modal-header bg-light border-bottom-0">
+            <h5 class="modal-title" id="editAdModalLabel">
+            <i class="fas fa-edit me-2"></i>Uredi oglas
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+        </div>
+
+        <!-- Tijelo modala s formom -->
+        <div class="modal-body p-4">
+            <form id="editAdForm" novalidate>
+            <!-- Skriveno polje za ID oglasa -->
+            <input type="hidden" id="editAdId">
+            
+            <!-- Polje za naslov -->
+            <div class="mb-3">
+                <label for="editTitleInput" class="form-label fw-bold">Naslov oglasa</label>
+                <input type="text" class="form-control" id="editTitleInput" placeholder="Npr. Bicikl Mountain Pro" required>
+            </div>
+
+            <!-- Polje za opis -->
+            <div class="mb-3">
+                <label for="editDescriptionInput" class="form-label fw-bold">Opis</label>
+                <textarea class="form-control" id="editDescriptionInput" rows="4" placeholder="Detaljan opis proizvoda..."></textarea>
+            </div>
+
+            <!-- Red za cijenu i stanje -->
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                <label for="editPriceInput" class="form-label fw-bold">Cijena (€)</label>
+                <input type="number" class="form-control" id="editPriceInput" step="0.01" placeholder="Unesite cijenu" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                <label for="editConditionSelect" class="form-label fw-bold">Stanje</label>
+                <select class="form-select" id="editConditionSelect">
+                    <option value="NEW">Novo</option>
+                    <option value="LIKE_NEW">Kao novo</option>
+                    <option value="USED">Korišteno</option>
+                </select>
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <!-- Podnožje modala s gumbima -->
+        <div class="modal-footer border-top-0 bg-light">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+            <button type="button" class="btn btn-primary px-4" id="saveAdChangesBtn">
+            <i class="fas fa-save me-2"></i>Spremi izmjene
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/js/index.js"></script>
+    <script type="module" src="/js/user-profile.js"></script>
+</body>
+</html>

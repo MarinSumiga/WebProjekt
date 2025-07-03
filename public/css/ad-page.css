@@ -1,0 +1,128 @@
+/* Poboljšanja za body pozadinu */
+body {
+    background-image: url('/images/header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: #f0f5f1;
+}
+
+/* Stilovi za kartice oglasa */
+/* Stilovi za kartice oglasa */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    background-color: #2a2a2a !important; /* Čvrsta tamna pozadina umjesto prozirne */
+    color: #f0f5f1; /* Bijeli tekst za kontrast */
+}
+
+.card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); /* Povećan intenzitet sjene za bolji efekt */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 25rem;
+    object-fit: cover;
+}
+
+.ad-price {
+    font-size: 1.5rem;
+    color: #0d6efd; /* Plava boja za cijenu */
+}
+
+.ad-condition {
+    font-size: 0.97rem;
+}
+
+.ad-location {
+    color: #ccc; /* Svjetliji tekst za lokaciju */
+}
+
+.card-body {
+    background-color: #2a2a2a; /* Osigurava da tijelo kartice nema prozirnost */
+}
+
+#loading-spinner {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Stilovi za filtere */
+.filter-controls {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid #333;
+    backdrop-filter: blur(5px);
+}
+
+.filter-controls .form-label {
+    color: #ccc;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.filter-controls .form-control,
+.filter-controls .form-select {
+    background-color: #2a2a2a;
+    color: #f0f5f1;
+    border: 1px solid #444;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-controls .form-control::placeholder {
+    color: #6c757d;
+}
+
+.filter-controls .form-control:focus,
+.filter-controls .form-select:focus {
+    background-color: #333;
+    color: #fff;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
+}
+
+.filter-controls .input-group-text {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: #ccc;
+}
+
+#reset-filters-btn {
+    border-color: #444;
+    color: #ccc;
+    padding: 0.55rem;
+}
+
+#reset-filters-btn:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+/* Responzivni dizajn */
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 1.1rem;
+    }
+    .ad-price {
+        font-size: 1.1rem;
+    }
+    .filter-controls .col-md-6 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Footer pozicioniranje */
+.bottom {
+    margin-top: auto;
+}

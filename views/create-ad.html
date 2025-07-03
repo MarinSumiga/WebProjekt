@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objavi Oglas - Web Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/create-ad.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-light brand-hover" href="/">Web Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Uključi navigaciju">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="nav-links">
+                    <!-- Dinamički sadržaj se učitava putem JS-a -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5 mb-5">
+        <h1 class="mb-4 text-center text-light">Objavi Oglas</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <form id="createAdForm">
+                    <!-- Sekcija za slike -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body bg-dark text-light">
+                            <h5 class="card-title">Slike</h5>
+                            <p class="card-text text-muted">Dodajte do 3 slike za vaš oglas</p>
+                            <div class="mb-3">
+                                <input type="file" id="imageInput" class="form-control" accept="image/*" multiple>
+                                <div id="imagePreview" class="row mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Osnovne informacije -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body bg-dark text-light">
+                            <h5 class="card-title">Osnovne Informacije</h5>
+                            <div class="mb-3">
+                                <label for="titleInput" class="form-label">Naslov Oglasa</label>
+                                <input type="text" id="titleInput" name="titleInput" class="form-control bg-dark text-light border-secondary" placeholder="Unesite naslov oglasa" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descriptionInput" class="form-label">Opis</label>
+                                <textarea id="descriptionInput" name="descriptionInput" class="form-control bg-dark text-light border-secondary" rows="5" placeholder="Opišite vaš predmet..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cijena i kategorija -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body bg-dark text-light">
+                            <h5 class="card-title">Cijena i Kategorija</h5>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="priceInput" class="form-label">Cijena</label>
+                                    <input type="number" id="priceInput" name="priceInput" class="form-control bg-dark text-light border-secondary" placeholder="0.00" step="0.01" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="currencySelect" class="form-label">Valuta</label>
+                                    <select id="currencySelect" name="currencySelect" class="form-select bg-dark text-light border-secondary">
+                                        <option value="EUR">EUR</option>
+                                        <option value="HRK">HRK</option>
+                                        <option value="USD">USD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="categorySelect" class="form-label">Kategorija</label>
+                                <select id="categorySelect" name="categorySelect" class="form-select bg-dark text-light border-secondary" required>
+                                    <option value="">Odaberite kategoriju</option>
+                                    <option value="ELECTRONICS">Elektronika</option>
+                                    <option value="CLOTHING">Odjeća</option>
+                                    <option value="HOME_GARDEN">Dom i vrt</option>
+                                    <option value="SPORTS">Sport</option>
+                                    <option value="VEHICLES">Vozila</option>
+                                    <option value="BOOKS">Knjige</option>
+                                    <option value="TOYS">Igračke</option>
+                                    <option value="OTHER">Ostalo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dodatne informacije -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body bg-dark text-light">
+                            <h5 class="card-title">Dodatne Informacije</h5>
+                            <div class="mb-3">
+                                <label for="conditionSelect" class="form-label">Stanje Predmeta</label>
+                                <select id="conditionSelect" name="conditionSelect" class="form-select bg-dark text-light border-secondary" required>
+                                    <option value="">Odaberite stanje</option>
+                                    <option value="NEW">Novo</option>
+                                    <option value="LIKE_NEW">Kao novo</option>
+                                    <option value="VERY_GOOD">Vrlo dobro</option>
+                                    <option value="GOOD">Dobro</option>
+                                    <option value="ACCEPTABLE">Prihvatljivo</option>
+                                    <option value="POOR">Loše</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="locationInput" class="form-label">Lokacija</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-geo-alt-fill"></i></span>
+                                    <input type="text" id="locationInput" name="locationInput" class="form-control bg-dark text-light border-secondary" placeholder="Unesite lokaciju ili kliknite za automatsko dohvaćanje">
+                                    <button type="button" id="getLocationBtn" class="btn btn-outline-primary"><i class="bi bi-search"></i></button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phoneInput" class="form-label">Kontakt Telefon</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-telephone-fill"></i></span>
+                                    <input type="tel" id="phoneInput" name="phoneInput" class="form-control bg-dark text-light border-secondary" placeholder="+385 91 234 5678">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gumbovi -->
+                    <div class="d-flex justify-content-between">
+                        <button type="button" id="cancelBtn" class="btn btn-outline-secondary w-50 me-2">Odustani</button>
+                        <button type="submit" id="publishBtn" class="btn btn-primary w-50">Objavi Oglas</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 bottom">
+        <div class="container">
+            <p class="mb-0">© 2023 Web Shop. Sva prava pridržana.</p>
+            <a href="#" class="text-white">Politika privatnosti</a> | <a href="#" class="text-white">Uvjeti korištenja</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/js/index.js"></script>
+    <script type="module" src="/js/create-ad.js"></script>
+</body>
+</html>

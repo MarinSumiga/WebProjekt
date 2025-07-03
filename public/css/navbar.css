@@ -1,0 +1,145 @@
+/* Osnovni stilovi za navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Osigurava da navbar bude iznad ostalih elemenata */
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(10px);
+    background-color: rgba(33, 37, 41, 0.95); /* Poluprozirna tamna pozadina za bolji kontrast */
+    border-bottom: 1px solid #232323;
+}
+
+/* Stilovi za body kako bi se izbjeglo preklapanje sadržaja */
+body {
+    padding-top: 56px; /* Prilagođeno visini navbar-a */
+}
+
+/* Efekti za brand (logo) */
+.brand-hover {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.brand-hover:hover {
+    color: #0d6efd !important;
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+}
+
+/* Animirani linkovi u navigaciji */
+.nav-link-animated {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    color: #ffffff; /* Osnovna boja teksta */
+}
+
+.nav-link-animated::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0d6efd, #6610f2);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link-animated:hover::before {
+    width: 80%;
+}
+
+.nav-link-animated:hover {
+    color: #fff !important;
+    transform: translateY(-2px);
+    text-shadow: 0 2px 8px rgba(13, 110, 253, 0.2);
+}
+
+/* Animirani gumb za prijavu */
+.login-btn-animated {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px !important;
+}
+
+.login-btn-animated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.login-btn-animated:hover::before {
+    left: 100%;
+}
+
+.login-btn-animated:hover {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+/* Stilovi za toggler (hamburger meni na mobilnim uređajima) */
+.navbar-toggler {
+    transition: all 0.3s ease;
+    border: none;
+    color: #ffffff;
+}
+
+.navbar-toggler:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Tranzicija za collapse meni */
+.navbar-collapse {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animacija za pojavljivanje stavki menija */
+.nav-item {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.nav-item:nth-child(1) { animation-delay: 0.1s; }
+.nav-item:nth-child(2) { animation-delay: 0.2s; }
+.nav-item:nth-child(3) { animation-delay: 0.3s; }
+.nav-item:nth-child(4) { animation-delay: 0.4s; }
+.nav-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responzivni stilovi */
+@media (max-width: 991.98px) {
+    .nav-link-animated:hover {
+        transform: translateX(5px);
+    }
+    .navbar-collapse {
+        background-color: rgba(33, 37, 41, 0.95); /* Pozadina za mobilni meni */
+        padding: 1rem;
+    }
+    .nav-item {
+        margin-bottom: 0.5rem;
+    }
+}

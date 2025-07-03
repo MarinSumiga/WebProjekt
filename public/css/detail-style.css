@@ -1,0 +1,80 @@
+/* Generalni stilovi za tamnu temu */
+body {
+    background-color: #121212;
+    color: #f0f5f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Glavna slika oglasa u karuselu */
+.ad-details-img {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Stil za thumbnailove ispod glavne slike */
+.thumbnail-container {
+    gap: 0.5rem;
+}
+.ad-thumbnail {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+.ad-thumbnail:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+.ad-thumbnail.active {
+    opacity: 1;
+    border-color: #0d6efd;
+}
+
+/* Naslov i cijena */
+h1.display-5 {
+    font-weight: 700;
+}
+.price-display {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #0d6efd; /* Istaknuta primarna boja */
+}
+
+/* Info panel s detaljima */
+.info-panel {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid #333;
+}
+.info-panel .info-item {
+    font-size: 1rem;
+}
+.info-panel .info-item i {
+    color: #6c757d; /* Prigušena boja za ikone */
+}
+
+/* Opis oglasa */
+.ad-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+/* Akcijski gumbi */
+.btn-lg {
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.btn-outline-light {
+    border-color: #555;
+    color: #ccc;
+}
+.btn-outline-light:hover {
+    background-color: #333;
+    color: #fff;
+}

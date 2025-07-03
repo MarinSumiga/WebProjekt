@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava - Web Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" style="border-bottom: 1px solid #232323;">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-light brand-hover" href="/">Web Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto" id="nav-links">
+                <li class="nav-item">
+                <a class="nav-link nav-link-animated active fw-semibold text-light" href="/">Početna</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="card-title text-center mb-4">Prijava</h2>
+                        
+                        <!-- Kontejner za prikaz poruka o grešci/uspjehu -->
+                        <div id="alert-container"></div>
+
+                        <form>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email adresa</label>
+                                <input type="email" class="form-control" id="email" placeholder="vas@email.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Lozinka</label>
+                                <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-dark" id="login-button">Prijavi se</button>
+                            </div>
+                        </form>
+
+                        <div class="text-center text-muted my-3">ili</div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-outline-dark" id="google-login-button">
+                                <i class="bi bi-google me-2"></i> Prijavi se s Googleom
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="mb-0">Nemate račun? <a href="/register">Registrirajte se</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 bottom">
+        <div class="container">
+            <p class="mb-0">© 2023 Web Shop. Sva prava pridržana.</p>
+            <a href="#" class="text-white">Politika privatnosti</a> | <a href="#" class="text-white">Uvjeti korištenja</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Ispravno učitavanje vaše login skripte -->
+    <script type="module" src="/js/login.js"></script>
+</body>
+</html>
